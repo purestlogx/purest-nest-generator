@@ -1,1 +1,76 @@
-<!-- HTML content of shipment_docs_v4.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purest Nest Shipping Document Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Purest Nest Shipping Document Generator</h1>
+    <form id="shippingDocumentForm">
+        <label for="senderName">Sender Name:</label>
+        <input type="text" id="senderName" required>
+
+        <label for="recipientName">Recipient Name:</label>
+        <input type="text" id="recipientName" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" required></textarea>
+
+        <label for="shippingDate">Shipping Date:</label>
+        <input type="date" id="shippingDate" required>
+
+        <button type="submit">Generate Document</button>
+    </form>
+    <script>
+        document.getElementById('shippingDocumentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const senderName = document.getElementById('senderName').value;
+            const recipientName = document.getElementById('recipientName').value;
+            const address = document.getElementById('address').value;
+            const shippingDate = document.getElementById('shippingDate').value;
+
+            const documentContent = `\n            <h1>Shipping Document</h1>\n            <p>Sender: ${senderName}</p>\n            <p>Recipient: ${recipientName}</p>\n            <p>Address: ${address}</p>\n            <p>Shipping Date: ${shippingDate}</p>\n            `;
+
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(documentContent);
+            newWindow.document.close();
+        });
+    </script>
+</body>
+</html>
